@@ -1,5 +1,5 @@
 .details-view {
-  button {
+  .back-button {
     color: $primary-light;
     background-color: $primary-light-button;
     font-weight: 700;
@@ -81,6 +81,21 @@
     padding:16px;
     p{
         font-size: 14px;
+    }
+  }
+
+  .details-contact{
+    margin-top:40px;
+    .col{
+        display:flex;
+        justify-content: flex-end;
+    }
+    button{
+        background-color:$primary-light;
+        border-radius: 8px;
+        color:white;
+        font-size:20px;
+        padding:14px 73px;
     }
   }
 }

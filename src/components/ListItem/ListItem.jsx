@@ -5,14 +5,15 @@ import { Link } from "react-router-dom";
 import { formatPrice } from "../../utils/helpers";
 
 export function ListItem(props) {
-  const { adId, address, image, price, uploadDate } = props;
+  const { adId, address, image, price, uploadDate, contact } = props;
 
   const linkStateData = {
     adId,
     address,
     image,
     price,
-    uploadDate
+    uploadDate,
+    contact
   }
 
   return (
