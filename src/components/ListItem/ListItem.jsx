@@ -1,8 +1,8 @@
 import React from "react";
-import { Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../../utils/helpers";
+import { Favourite } from "../Favourite/Favourite";
 
 export function ListItem(props) {
   const { adId, address, image, price, uploadDate, contact } = props;
@@ -21,7 +21,7 @@ export function ListItem(props) {
         to={`/details/${adId}`}
         state={linkStateData}
         >
-        <Row className="product">
+        <div className="product-row">
             <div
               className="product--image"
               style={{
@@ -29,10 +29,11 @@ export function ListItem(props) {
               }}
             ></div>
             <div className="product--details">
+              <Favourite adId={adId}/>
               <Card.Title>{address}</Card.Title>
               <Card.Text>{formatPrice(price)}Ft</Card.Text>
             </div>
-        </Row>
+        </div>
       </Link>
   );
 }

@@ -24,21 +24,8 @@
     }
   }
 
-  .details-panel {
-    @include shadow;
-    background-color: $white;
-    padding: 16px 30px;
-    border-radius: 16px;
-
-    h1 {
-      font-size: 24px;
-      margin: 0;
-      line-height: 1.2;
-    }
-  }
-
   .details-address-form {
-    margin: 40px 0;
+    margin: 20px 0 40px 0;
     background-color: $white;
     @include shadow;
     border-radius: 16px;
@@ -97,5 +84,28 @@
         font-size:20px;
         padding:14px 73px;
     }
+  }
+}
+
+.details-panel {
+  @include shadow;
+  background-color: $white;
+  padding: 16px 30px;
+  border-radius: 16px;
+  margin-bottom:20px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    font-size: 24px;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  p.number{
+    margin:0;
+    color:$grey;
+    font-weight: 700;
   }
 }

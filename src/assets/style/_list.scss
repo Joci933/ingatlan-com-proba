@@ -4,11 +4,13 @@
         text-decoration: none;
     }
 }
-.product.row{
+.product-row{
     background-color:$white;
     margin-bottom:20px;
     @include  shadow;
     border-radius: 16px;
+    display:flex;
+    
     .product{
         &--image{
             max-width:212px;
@@ -25,6 +27,7 @@
         }
 
         &--details{
+            position: relative;
             flex:0 0 77%;
             max-width: 77%;
             padding:20px;

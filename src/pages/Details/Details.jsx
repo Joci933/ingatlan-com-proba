@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Row, Col, Button, Modal } from "react-bootstrap";
 import { formatPrice } from "../../utils/helpers";
+import { PageTitle } from "../../components/PageTitle/PageTitle";
 
 export function Details() {
   const [show, setShow] = useState(false);
@@ -22,9 +23,7 @@ export function Details() {
           </button>
         </Col>
         <Col xs={8}>
-          <div className="details-panel">
-            <h1>Részletek</h1>
-          </div>
+          <PageTitle title="Részletek"/>
         </Col>
       </Row>
 

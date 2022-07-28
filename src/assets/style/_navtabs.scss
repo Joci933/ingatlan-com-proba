@@ -1,0 +1,45 @@
+.navtabs{
+    background-color:$white;
+    border-radius: 16px;
+    @include shadow;
+    padding:20px;
+   
+
+    .nav-link{
+        font-size: 24;
+        color:$primary-light;
+        padding:10px 20px;
+        display:flex;
+        align-items: center;
+
+        &.list{
+            &:before {
+                content: "";
+                width: 24px;
+                height: 24px;
+                background-image: url("./../icons/list.svg");
+                background-position: center;
+                display: inline-block;
+                margin-right: 14px;
+                }
+        }
+
+        &.favourites{
+            &:before {
+                content: "";
+                width: 17px;
+                height: 16px;
+                background-image: url("./../icons/star_tab.svg");
+                background-position: center;
+                display: inline-block;
+                margin-right: 17px;
+                }
+        }
+
+        &.active{
+            font-weight: bold;
+            background-color:$primary-light-button;
+            color:$primary-light;
+        }
+    }
+}

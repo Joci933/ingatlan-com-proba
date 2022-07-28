@@ -1,0 +1,22 @@
+.favourite-star{
+    @include shadow;
+    width:40px;
+    height:40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    position: absolute;
+    top:30px;
+    right:20px;
+
+    &.filled{
+        svg{
+            fill:$cheese;
+
+            path{
+                stroke:none;
+            }
+        }
+    }
+}
