@@ -3,13 +3,14 @@ import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
+import { List } from '../List/List';
 
 const tabKeys = {
     list: 'list',
     favourites: 'favourites'
 }
 
-export function Tabs() {
+export function Tabs({adList}) {
     
     const { list, favourites } = tabKeys;
 
@@ -33,7 +34,7 @@ export function Tabs() {
             <Col sm={9}>
               <Tab.Content>
                 <Tab.Pane eventKey={list}>
-
+                    <List adList={adList}/>
                 </Tab.Pane>
                 <Tab.Pane eventKey={favourites}>
                 </Tab.Pane>

@@ -1,0 +1,43 @@
+.tab-content{
+    a{
+        color:$dark-text;
+        text-decoration: none;
+    }
+}
+.product.row{
+    background-color:$white;
+    margin-bottom:20px;
+    @include  shadow;
+    border-radius: 16px;
+    .product{
+        &--image{
+            max-width:212px;
+            width:100%;
+            height:180px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            flex:0 0 23%;
+            max-width: 23%;
+            background-color:$darker-base-color;
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 16px;
+        }
+
+        &--details{
+            flex:0 0 77%;
+            max-width: 77%;
+            padding:20px;
+
+            .card-title{
+                font-size:30px;
+                font-weight: 700;
+                margin-bottom:16px;
+            }
+
+            .card-text{
+                font-size:24px;
+            }
+        }
+    }
+}
