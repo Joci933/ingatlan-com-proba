@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 import { useRecoilState } from "recoil";
 import { textState } from "../../recoil/state";
+import { AttentionBlock } from "../AttentionBlock/AttentionBlock";
 import { List } from "../List/List";
 import { PageTitle } from "../PageTitle/PageTitle";
 
@@ -47,7 +48,10 @@ export function Tabs({ adList }) {
               </Tab.Pane>
               <Tab.Pane eventKey={favourites}>
                 <PageTitle title="Kedvencek" number={favouriteList.length}/>
-                <List adList={favouriteList} />
+                {   favouriteList.length > 0 ?
+                  <List adList={favouriteList} /> :
+                  <AttentionBlock text="Még nem adott hozzá kedvenceket"/>
+                  }
               </Tab.Pane>
             </Tab.Content>
           </Col>

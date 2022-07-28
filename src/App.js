@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import {
   BrowserRouter,
   Routes,
@@ -9,17 +9,8 @@ import './assets/style/style.scss';
 import { Details } from "./pages/Details/Details";
 import { Home } from "./pages/Home/Home";
 import { Header } from "./components/Header/Header";
-import { FAVOURITES } from "./utils/constants";
 
 function App() {
-
-  useEffect(() => {
-    const items =localStorage.getItem(FAVOURITES);
-    if (!items && !items.length) {
-      localStorage.setItem(FAVOURITES, JSON.stringify([]));
-    }
-  }, []);
-
   return (
     <div className="App">
       <Header/>

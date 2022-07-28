@@ -23,3 +23,14 @@ body{
 .content-container{
     margin-top:40px;
 }
+
+.attention-block{
+    @include shadow;
+    background-color: #FFFFFF;
+    padding: 16px 30px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
