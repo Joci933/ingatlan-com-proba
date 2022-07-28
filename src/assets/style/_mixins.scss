@@ -1,3 +1,30 @@
 @mixin shadow() {
     filter: drop-shadow(0px 0px 10px rgba(50, 62, 200, 0.2));
 }
+
+// Media Query
+$breakpoints: (
+  xs: 320px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  hd: 1440px,
+  fhd: 1920px
+);
+
+@mixin down($breakpoint) {
+    @if type-of($breakpoint) == 'number' {
+      @media (max-width: ($breakpoint - 1+px)) {
+        @content;
+      }
+    } @else if map-has-key($breakpoints, $breakpoint) {
+      $breakpoint-value: map-get($breakpoints, $breakpoint);
+      @media (max-width: ($breakpoint-value - 1)) {
+        @content;
+      }
+    } @else {
+      @warn 'Invalid breakpoint: #{$breakpoint}.';
+    }
+  }
+  

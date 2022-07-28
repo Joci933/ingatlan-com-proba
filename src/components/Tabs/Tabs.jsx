@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 import { useRecoilState } from "recoil";
-import { textState } from "../../recoil/state";
+import { tabBarVisible, textState } from "../../recoil/state";
 import { AttentionBlock } from "../AttentionBlock/AttentionBlock";
 import { List } from "../List/List";
 import { PageTitle } from "../PageTitle/PageTitle";
@@ -16,6 +16,7 @@ const tabKeys = {
 
 export function Tabs({ adList }) {
   const [favourite, setFavourite] = useRecoilState(textState);
+  const [tabBar, setTabBar] = useRecoilState(tabBarVisible);
   const [favouriteList, setFavouriteList] = useState([])
   const { list, favourites } = tabKeys;
 
@@ -26,8 +27,11 @@ export function Tabs({ adList }) {
   return (
       <Tab.Container id="left-tabs-example" defaultActiveKey={list}>
         <Row>
-          <Col sm={3}>
-            <Nav variant="pills" className="navtabs flex-column">
+          <Col md={3}>
+            <Nav variant="pills" className={`
+            navtabs flex-column
+            ${tabBar ? 'navtabs-show': ''}
+            `}>
               <Nav.Item>
                 <Nav.Link eventKey={list} className="list" href="#">
                   Lista
@@ -40,7 +44,7 @@ export function Tabs({ adList }) {
               </Nav.Item>
             </Nav>
           </Col>
-          <Col sm={9}>
+          <Col md={9}>
             <Tab.Content>
               <Tab.Pane eventKey={list}>
                 <PageTitle title="Lista" number={adList.length}/>

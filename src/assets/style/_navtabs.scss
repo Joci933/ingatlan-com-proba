@@ -3,6 +3,17 @@
     border-radius: 16px;
     @include shadow;
     padding:20px;
+
+    @include down(md){
+        display:none;
+        margin-bottom:23px;
+    }
+
+    &.navtabs-show{
+        @include down(md){
+            display:block;
+        }
+    }
    
 
     .nav-link{

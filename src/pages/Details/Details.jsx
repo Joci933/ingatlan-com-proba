@@ -36,14 +36,14 @@ export function Details() {
 
       <div className="details-address-form">
         <Row>
-          <Col xs={12}>
-            <div>
+          <Col className="info-box" xs={12}>
+            <div className="address-box">
               <strong>{state.address}</strong>
               <p>{formatPrice(state.price)}</p>
               <Favourite adId={state.adId} />
             </div>
           </Col>
-          <Col xs={12}>
+          <Col className="info-box" xs={12}>
             <p className="date">{state.uploadDate}</p>
           </Col>
           <Col xs={12}>

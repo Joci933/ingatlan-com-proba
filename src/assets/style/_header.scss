@@ -3,4 +3,23 @@ header{
     min-height: 65px;
     border-radius: 0px 0px 16px 16px;
     @include shadow;
+    display: flex;
+    align-items: center;
+
+    .toggleTabbar{
+        display:none;
+
+        @include down(md){
+            position: relative;
+            border:none;
+            width: 24px;
+            height: 24px;
+            background-image: url("./../icons/menu.svg");
+            background-position: center;
+            display: inline-block;
+            margin-left: 20px;
+            background-color:white;
+        }
+
+    }
 }

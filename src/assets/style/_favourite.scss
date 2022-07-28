@@ -1,5 +1,5 @@
 .favourite-star{
-    @include shadow;
+    box-shadow: 0px 0px 10px rgba(50, 62, 200, 0.2);
     width:40px;
     height:40px;
     display: flex;
@@ -10,6 +10,11 @@
     top:30px;
     right:20px;
     cursor: pointer;
+
+    @include down(md){
+        top:20px;
+        right:20px;
+    }
 
     &.filled{
         svg{
