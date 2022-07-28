@@ -3,7 +3,8 @@ import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
-import { getFavourites } from "../../utils/helpers";
+import { useRecoilState } from "recoil";
+import { textState } from "../../recoil/state";
 import { List } from "../List/List";
 import { PageTitle } from "../PageTitle/PageTitle";
 
@@ -13,18 +14,13 @@ const tabKeys = {
 };
 
 export function Tabs({ adList }) {
+  const [favourite, setFavourite] = useRecoilState(textState);
   const [favouriteList, setFavouriteList] = useState([])
   const { list, favourites } = tabKeys;
 
   useEffect(() => {
-    console.log('asd')
-  })
-
-  const getFavouriteList = () => {
-    const fav = getFavourites();
-    setFavouriteList(adList.filter(el => fav.indexOf(el.adId) > -1))
-  }
-
+    setFavouriteList(adList.filter(el => favourite.indexOf(el.adId) > -1))
+  }, [favourite])
 
   return (
       <Tab.Container id="left-tabs-example" defaultActiveKey={list}>
@@ -50,7 +46,7 @@ export function Tabs({ adList }) {
                 <List adList={adList} />
               </Tab.Pane>
               <Tab.Pane eventKey={favourites}>
-                <PageTitle title="Kedvencek" number={adList.length}/>
+                <PageTitle title="Kedvencek" number={favouriteList.length}/>
                 <List adList={favouriteList} />
               </Tab.Pane>
             </Tab.Content>

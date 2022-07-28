@@ -1,34 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { FAVOURITES } from "../../utils/constants";
-import { isFavourite, getFavourites } from "../../utils/helpers";
+import React from "react";
+import { useRecoilState } from "recoil";
+import { textState } from "../../recoil/state";
 
 export function Favourite({adId}) {
 
-  const [favourite, setFavourite] = useState(false);
-
-  useEffect(() => {
-    setFavourite(isFavourite(adId));
-  }, []);
+  const [favourite, setFavourite] = useRecoilState(textState);
 
   const handleClick = (e) => {
     e.preventDefault();
-    const favourites = getFavourites()
-    if(favourite){
-      const getIndex = favourites.indexOf(adId);
-      favourites.splice(getIndex, 1);
-      localStorage.setItem(FAVOURITES, JSON.stringify(favourites));
-      setFavourite(false);
-      return 
+    
+    const getIndex = favourite.indexOf(adId);
+    if(getIndex > -1){
+      const removeItemFromArray = favourite.filter(item => item !== adId)
+      setFavourite(removeItemFromArray);
+    }else{
+      const newArray = [...favourite, adId]
+      setFavourite(newArray);
     }
-    favourites.push(adId);
-    localStorage.setItem(FAVOURITES, JSON.stringify(favourites));
-    setFavourite(isFavourite(adId));
   }
 
   return (
     <div
     onClick={handleClick}
-    className={`favourite-star ${favourite ? 'filled' : ''} `}>
+    className={`favourite-star ${favourite.some(el => el === adId) ? 'filled' : ''} `}>
       <svg
         width="24"
         height="23"

@@ -12,7 +12,6 @@ export function Details() {
   const handleShow = () => setShow((show) => !show);
 
   const { state } = location;
-  console.log("aaa", location);
 
   return (
     <div className="details-view">
