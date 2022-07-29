@@ -1,3 +1,24 @@
+#date-box {
+  font-size:16px;
+  display:flex;
+  align-items: center;
+  margin-top:46px;
+
+  @include down(md){
+    margin-top:12px;
+  }
+
+  &:before {
+    content: "";
+    width: 14px;
+    height: 15px;
+    background-image: url("./../icons/date.svg");
+    background-position: center;
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
 .details-view {
   @include down(md){
     margin-top:-88px;
@@ -71,27 +92,6 @@
       @include down(md){
         font-size:16px;
         margin-bottom:0;
-      }
-
-      &.date {
-        font-size:16px;
-        display:flex;
-        align-items: center;
-        margin-top:46px;
-
-        @include down(md){
-          margin-top:12px;
-        }
-
-        &:before {
-          content: "";
-          width: 14px;
-          height: 15px;
-          background-image: url("./../icons/date.svg");
-          background-position: center;
-          display: inline-block;
-          margin-right: 10px;
-        }
       }
     }
 
@@ -172,6 +172,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size:cover;
+    background-color:$darker-base-color;
 
     @include down(md){
       height:463px;
@@ -213,3 +214,4 @@
     }
   }
 }
+

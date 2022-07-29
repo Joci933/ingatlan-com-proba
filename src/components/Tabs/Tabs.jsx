@@ -21,7 +21,15 @@ export function Tabs({ adList }) {
   const { list, favourites } = tabKeys;
 
   useEffect(() => {
-    setFavouriteList(adList.filter(el => favourite.indexOf(el.adId) > -1))
+
+    const result = adList.map((e) => {
+      for(let element of favourite){
+          if(e.adId === element.adId) Object.assign(e, element);
+      }
+      return e;
+  });
+
+    setFavouriteList(result.filter(el => favourite.some(favouriteElement => favouriteElement.adId === el.adId)))
   }, [favourite])
 
   return (
@@ -53,7 +61,7 @@ export function Tabs({ adList }) {
               <Tab.Pane eventKey={favourites}>
                 <PageTitle title="Kedvencek" number={favouriteList.length}/>
                 {   favouriteList.length > 0 ?
-                  <List adList={favouriteList} /> :
+                  <List showDate adList={favouriteList} /> :
                   <AttentionBlock text="Még nem adott hozzá kedvenceket"/>
                   }
               </Tab.Pane>

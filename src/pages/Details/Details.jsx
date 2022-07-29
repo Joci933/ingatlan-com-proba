@@ -4,6 +4,7 @@ import { Row, Col, Button, Modal } from "react-bootstrap";
 import { formatPrice } from "../../utils/helpers";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
 import { Favourite } from "../../components/Favourite/Favourite";
+import { DateBox } from "../../components/DateBox/Date";
 
 export function Details() {
   const [show, setShow] = useState(false);
@@ -44,7 +45,7 @@ export function Details() {
             </div>
           </Col>
           <Col className="info-box" xs={12}>
-            <p className="date">{state.uploadDate}</p>
+            <DateBox text={state.uploadDate}/>
           </Col>
           <Col xs={12}>
             <div className="description-box">

@@ -1,6 +1,7 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { textState } from "../../recoil/state";
+import { getCurrentTimestampDate } from "../../utils/helpers";
 
 export function Favourite({adId}) {
 
@@ -9,12 +10,13 @@ export function Favourite({adId}) {
   const handleClick = (e) => {
     e.preventDefault();
     
-    const getIndex = favourite.indexOf(adId);
-    if(getIndex > -1){
-      const removeItemFromArray = favourite.filter(item => item !== adId)
-      setFavourite(removeItemFromArray);
+    const getIndex = favourite.find(el => el.adId === adId);
+
+    if(getIndex){
+      const restFavourite = favourite.filter(el => el.adId !== adId);
+      setFavourite(restFavourite);
     }else{
-      const newArray = [...favourite, adId]
+      const newArray = [...favourite, {adId, addedDate: getCurrentTimestampDate()}]
       setFavourite(newArray);
     }
   }
@@ -22,7 +24,7 @@ export function Favourite({adId}) {
   return (
     <div
     onClick={handleClick}
-    className={`favourite-star ${favourite.some(el => el === adId) ? 'filled' : ''} `}>
+    className={`favourite-star ${favourite.some(el => el.adId === adId) ? 'filled' : ''} `}>
       <svg
         width="24"
         height="23"
