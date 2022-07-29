@@ -2,6 +2,10 @@
     filter: drop-shadow(0px 0px 10px rgba(50, 62, 200, 0.2));
 }
 
+@mixin transition(){
+  transition: all 0.4s ease;
+}
+
 // Media Query
 $breakpoints: (
   xs: 320px,

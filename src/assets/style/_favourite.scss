@@ -10,18 +10,25 @@
     top:30px;
     right:20px;
     cursor: pointer;
+    @include transition;
+
+    &:hover{
+        background-color:$primary-light-button-hover;
+    }
 
     @include down(md){
         top:20px;
         right:20px;
     }
 
-    &.filled{
+    &.filled,
+    &:hover{
+        
         svg{
             fill:$cheese;
 
             path{
-                stroke:none;
+                stroke: $cheese;
             }
         }
     }

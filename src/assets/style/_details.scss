@@ -43,6 +43,11 @@
     border-radius: 8px;
     border: none;
     justify-content: center;
+    @include transition;
+
+    &:hover{
+      background-color:$primary-light-button-hover;
+    }
 
     @include down(md){
       width:40px;
@@ -156,6 +161,11 @@
         color:white;
         font-size:20px;
         padding:14px 73px;
+        @include transition;
+
+        &:hover{
+          background-color:$primary-light-hover;
+        }
 
         @include down(md){
           width: 100%;
