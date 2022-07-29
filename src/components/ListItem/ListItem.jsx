@@ -33,7 +33,7 @@ export function ListItem(props) {
             <div className="product--details">
               <div className="product--details-inner">
                 <div>
-                  <Favourite adId={adId}/>
+                  <Favourite adId={adId} address={address}/>
                   <Card.Title>{address}</Card.Title>
                   <Card.Text>{formatPrice(price)}</Card.Text>
                 </div>

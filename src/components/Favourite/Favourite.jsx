@@ -1,9 +1,9 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { textState } from "../../recoil/state";
-import { getCurrentTimestampDate } from "../../utils/helpers";
+import { getCurrentTimestampDate, slugify } from "../../utils/helpers";
 
-export function Favourite({adId}) {
+export function Favourite({adId, address}) {
 
   const [favourite, setFavourite] = useRecoilState(textState);
 
@@ -16,7 +16,11 @@ export function Favourite({adId}) {
       const restFavourite = favourite.filter(el => el.adId !== adId);
       setFavourite(restFavourite);
     }else{
-      const newArray = [...favourite, {adId, addedDate: getCurrentTimestampDate()}]
+      const newArray = [...favourite, {
+        adId,
+        addedDate: getCurrentTimestampDate(),
+        slug: slugify(address)
+      }]
       setFavourite(newArray);
     }
   }

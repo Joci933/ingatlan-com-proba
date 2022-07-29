@@ -41,7 +41,7 @@ export function Details() {
             <div className="address-box">
               <strong>{state.address}</strong>
               <p>{formatPrice(state.price)}</p>
-              <Favourite adId={state.adId} />
+              <Favourite address={state.address} adId={state.adId} />
             </div>
           </Col>
           <Col className="info-box" xs={12}>

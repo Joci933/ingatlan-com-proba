@@ -18,7 +18,7 @@ const tabKeys = {
 
 const selectOptions = [
   {
-    value:'address',
+    value:'slug',
     label:'Cím'
   },
   {
@@ -43,7 +43,6 @@ export function Tabs({ adList }) {
       }
       return e;
   });
-
     const orderList = _.orderBy(result, order, 'asc');
 
     setFavouriteList(orderList.filter(el => favourite.some(favouriteElement => favouriteElement.adId === el.adId)))
@@ -77,9 +76,11 @@ export function Tabs({ adList }) {
               </Tab.Pane>
               <Tab.Pane eventKey={favourites}>
                 <PageTitle title="Kedvencek" number={favouriteList.length}/>
-                <Select options={selectOptions} label="Rendezés" />
                 {   favouriteList.length > 0 ?
-                  <List showDate adList={favouriteList} /> :
+                  <>
+                    <Select options={selectOptions} label="Rendezés" />
+                    <List showDate adList={favouriteList} />
+                  </> :
                   <AttentionBlock text="Még nem adott hozzá kedvenceket"/>
                   }
               </Tab.Pane>

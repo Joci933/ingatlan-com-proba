@@ -12,5 +12,5 @@ export const tabBarVisible = atom({
 
 export const orderBy = atom({
     key: 'orderBy',
-    default: 'address',
+    default: 'slug',
 });

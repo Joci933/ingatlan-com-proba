@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 export function formatPrice(number) {
     return `${number.toLocaleString('hu-HU')} Ft`;
 }
@@ -8,4 +10,8 @@ export function formatDate(date){
 
 export function getCurrentTimestampDate(){
     return new Date().getTime();
+}
+
+export function slugify(string){
+    return _.deburr( string );
 }
