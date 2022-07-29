@@ -49,7 +49,7 @@ export function Details() {
           </Col>
           <Col xs={12}>
             <div className="description-box">
-              <p className="description">Lorem ipsum</p>
+              <p className="description">{state.description}</p>
             </div>
           </Col>
         </Row>

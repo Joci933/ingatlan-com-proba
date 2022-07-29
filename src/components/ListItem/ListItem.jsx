@@ -6,9 +6,7 @@ import { DateBox } from "../DateBox/Date";
 import { Favourite } from "../Favourite/Favourite";
 
 export function ListItem(props) {
-  const { adId, address, image, price, uploadDate, contact, addedDate, showDate } = props;
-
-  console.log('asd', props)
+  const { adId, address, image, price, uploadDate, contact, addedDate, showDate, description } = props;
 
   const linkStateData = {
     adId,
@@ -17,7 +15,7 @@ export function ListItem(props) {
     price,
     uploadDate,
     contact,
-    
+    description
   }
 
   return (

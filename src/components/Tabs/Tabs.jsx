@@ -1,27 +1,42 @@
 import React, {useEffect, useState} from "react";
+import _ from "lodash";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
-import { useRecoilState } from "recoil";
-import { tabBarVisible, textState } from "../../recoil/state";
+import { useRecoilValue } from "recoil";
+import { orderBy, tabBarVisible, textState } from "../../recoil/state";
 import { AttentionBlock } from "../AttentionBlock/AttentionBlock";
 import { List } from "../List/List";
 import { PageTitle } from "../PageTitle/PageTitle";
+import Select from "../Select/Select";
 
 const tabKeys = {
   list: "list",
   favourites: "favourites",
 };
 
+const selectOptions = [
+  {
+    value:'address',
+    label:'Cím'
+  },
+  {
+    value:'addedDate',
+    label:'Dátum'
+  },
+]
+
 export function Tabs({ adList }) {
-  const [favourite, setFavourite] = useRecoilState(textState);
-  const [tabBar, setTabBar] = useRecoilState(tabBarVisible);
+  const favourite = useRecoilValue(textState);
+  const tabBar = useRecoilValue(tabBarVisible);
+  const order = useRecoilValue(orderBy);
+
   const [favouriteList, setFavouriteList] = useState([])
+  
   const { list, favourites } = tabKeys;
 
   useEffect(() => {
-
     const result = adList.map((e) => {
       for(let element of favourite){
           if(e.adId === element.adId) Object.assign(e, element);
@@ -29,8 +44,10 @@ export function Tabs({ adList }) {
       return e;
   });
 
-    setFavouriteList(result.filter(el => favourite.some(favouriteElement => favouriteElement.adId === el.adId)))
-  }, [favourite])
+    const orderList = _.orderBy(result, order, 'asc');
+
+    setFavouriteList(orderList.filter(el => favourite.some(favouriteElement => favouriteElement.adId === el.adId)))
+  }, [favourite, order])
 
   return (
       <Tab.Container id="left-tabs-example" defaultActiveKey={list}>
@@ -60,6 +77,7 @@ export function Tabs({ adList }) {
               </Tab.Pane>
               <Tab.Pane eventKey={favourites}>
                 <PageTitle title="Kedvencek" number={favouriteList.length}/>
+                <Select options={selectOptions} label="Rendezés" />
                 {   favouriteList.length > 0 ?
                   <List showDate adList={favouriteList} /> :
                   <AttentionBlock text="Még nem adott hozzá kedvenceket"/>
